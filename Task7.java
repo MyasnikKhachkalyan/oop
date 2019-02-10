@@ -104,12 +104,3 @@ public class Task7{
         }
     }        
 }   
-
-// if(help==2*num){
-//                         for(int x=0; x<num; x++){
-//                             for(int y=0; y<num; y++){
-//                                 System.out.print(matrix[x][y] + "   ");
-//                             }  
-//                             System.out.println(""); 
-//                         }
-//                     }
