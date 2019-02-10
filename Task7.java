@@ -1,43 +1,115 @@
 public class Task7{
     public static void main(String[] args){
-        int num = 5; 
+        int num = 6; 
         int help = 0;
         int[][] matrix = new int[num][num];
-        int i,j = 0;
-        for(i=0; i<num; i++) {
-            if(j==num && i!=0 && i!=num-1){
-                matrix[i][j-1]=num+i;
-                help++;
-            }
-            if(i!=0 && i!=num-1){
-                matrix[i][0]= (num*4-3)-i;
-                help++;
-            }
-            for(j=0; j<num; j++) {
-                if(i==0){ 
-                    matrix[i][j] = j+1;
-                    help++;
-                }
-                else if(i==num-1){
-                    matrix[i][j]= (num*3-2)-j;
-                    help++;
-                }
-                // if(matrix[1][0]){
-                //     num*5-6
-                // }
-                System.out.print(matrix[i][j] + "     ");
-            }
-            System.out.println("");
-        }
-        System.out.println(help);
-        // for (int i=1; i<=num; i++){
-        //     for(int j=1; j<=num; j++){
-        //         System.out.print(j);
+        int i = 0;
+        int j = -1;
 
-        //     }
-        // }  12345
-    }      //     6
-              //  7
-              //  8
-              //  131211109  
+        horizontal(i,j,num,help,matrix,true);
+
+
+        for(int x=0; x<num; x++){
+            for(int y=0; y<num; y++){
+                System.out.print(matrix[x][y] + "   ");
+            }  
+                            System.out.println(""); 
+        }  
+    } 
+    static void horizontal(int a, int b, int num, int help, int[][] matrix, boolean right){
+        if(help!=num*num+1){
+            if(right){
+                int j;
+                b++;
+                help++;
+                for(j=b; j<num; j++) {
+                    if(j<=num-1){
+                        if(matrix[a][j]==0){
+                            matrix[a][j] = help;
+                            help++;  
+                        }
+                        else{
+                            j--;
+                            vertical(a,j,num,help,matrix,true);
+                            break;
+                        }    
+                    }    
+                } 
+                if(j==num && a==0){
+                    vertical(a,j-1,num,help,matrix,true);
+                }
+
+            }       
+            else{
+                int j;
+                b--;
+                for(j=b; j>=0; j--) {
+                    if(j>=0){
+                        if(matrix[a][j] == 0){
+                            matrix[a][j] = help;
+                            help++; 
+                        }
+                        else{
+                            j++;
+                            vertical(a,j,num,help,matrix,false);
+                            break;
+                        }
+                    }    
+                }
+                if(j==-1 && a==num-1){
+                        vertical(a,j+1,num,help,matrix,false);
+                    }  
+            }
+        }
+    }
+    static void vertical(int a, int b, int num, int help, int[][] matrix, boolean down){
+        if(help!=num*num+1){
+            if(down){
+                int i;
+                a++;
+                for(i=a; i<num; i++) {
+                    if(i<=num-1){
+                        if(matrix[i][b]==0){
+                            matrix[i][b] = help;
+                            help++;
+                        }
+                        else{
+                            i--;
+                            horizontal(i,b,num,help,matrix,false);
+                            break;
+                        }
+                    }      
+                }
+                if(i==num && b==num-1){
+                        horizontal(i-1,b,num,help,matrix,false);
+                    }
+            } 
+            else{
+                a--;
+                for(int i=a; i>=0; i--) {
+                        if(matrix[i][b]==0){
+                            matrix[i][b] = help;
+                            help++;
+                        }
+                        else{
+                            i++;
+                            help--;
+                            horizontal(i,b,num,help,matrix,true);
+                            break;
+                        }
+                    }
+                        
+                
+            } 
+        }
+    }        
 }   
+
+// if(help==2*num){
+//                         for(int x=0; x<num; x++){
+//                             for(int y=0; y<num; y++){
+//                                 System.out.print(matrix[x][y] + "   ");
+//                             }  
+//                             System.out.println(""); 
+//                         }
+//                     }
