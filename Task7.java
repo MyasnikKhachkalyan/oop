@@ -1,6 +1,10 @@
+import java.util.Scanner;
+
 public class Task7{
     public static void main(String[] args){
-        int num = 6; 
+        Scanner myObj = new Scanner(System.in);
+        System.out.println("write a number to make a matrix");
+        int num = myObj.nextInt(); 
         int help = 0;
         int[][] matrix = new int[num][num];
         int i = 0;
@@ -11,7 +15,13 @@ public class Task7{
 
         for(int x=0; x<num; x++){
             for(int y=0; y<num; y++){
-                System.out.print(matrix[x][y] + "   ");
+                if(x==0 && num>4){
+                    System.out.print(matrix[x][y] + "    ");
+                }
+                else if(num==4 && (x==0 || x==num-1)){
+                    System.out.print(matrix[x][y] + "    ");
+                }
+                else System.out.print(matrix[x][y] + "   ");
             }  
                             System.out.println(""); 
         }  
