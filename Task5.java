@@ -13,10 +13,10 @@ public class Task5{
                     parts[i] = parts[i+1];
                     parts[i+1] = helper;
                 }
-            }
+            }// loops input/2 times
             for(int i = 1; i<parts.length; i++){
                 System.out.print(parts[i] + " ");
-            }
+            } // loops input times
         }
         else System.out.println("Number of written words should be equal to inputed number");
         
