@@ -5,7 +5,7 @@ public class Task3{
 
         Scanner myObj = new Scanner(System.in);
         System.out.println("Write number to calculate its factorial");
-        int factNum = myObj.nextInt();  // max value of factNum that can compute is 65
+        int factNum = myObj.nextInt();  // max value of factNum that can be computed is 20
 
         long factorial = 1;
         for(int i=factNum; i>0; i--){
